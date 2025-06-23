@@ -1,15 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ItemList from './ItemList';
 
-
-
-
-
-
-// const response = await fetch('https://dummyjson.com/products');
-//       const data = await response.json()
-//       console.log(data);
-
 function ItemListContainer () {
 
     const [items, setItems] = useState([])
