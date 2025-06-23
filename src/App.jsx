@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer'
@@ -12,7 +12,7 @@ function App() {
     {/* Main */}
     <main>
       {/* Lista de productos */}
-      <ItemListContainer text="Bienvenido a Winston!" />
+      <ItemListContainer />
     </main>
 
     </>
@@ -21,3 +21,12 @@ function App() {
 }
 
 export default App
+
+const data = { name: 'soy una promesa'}
+
+const promesa = new Promise((resolve, reject)=> {resolve(data)}) 
+
+const resultadoPromesa = await promesa
+
+console.log(resultadoPromesa);
+

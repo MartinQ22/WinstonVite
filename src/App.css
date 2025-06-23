@@ -4,30 +4,34 @@
 }
 /* NavBar */
 .NavBar{
+  background-color: #f5f5f5;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #333;
-  padding: 20px 50px;
-  border-radius: 55px;
+  padding: 10px 0;
   min-width: 98%;
+   position: fixed; /* Esto hace que la barra se quede pegada */
+    top: 0;          /* La pega a la parte superior de la ventana */
+    left: 0;         /* La pega a la parte izquierda de la ventana */
+    width: 100%;     /* Asegura que ocupe todo el ancho de la ventana */
+    z-index: 1000;   
 }
 
 .navLinks{
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 20%;
   display: flex;
   gap: 30px;
 }
 
 .navLinks li:hover{
-  border-bottom: 2.4px solid #f5f5f5;
+  border-bottom: 2.4px solid #151515;
   transition: border-bottom 0.15s ease;
 }
 
 .navLinks a{
-  color: #f5f5f5;
+  color: #151515;
   text-decoration: none;
 }
 
@@ -40,10 +44,12 @@
   height: 50px;
   display: flex;
   align-items: center;
+  border: 2px solid #fc00ff;
+  
 }
 
 .cartWidget:hover{
-  background-color: #dadada;
+  background-color: #f5f5f5;
   transition: background-color 0.2s ease-in-out;
 }
 
@@ -53,12 +59,12 @@
 }
 
 .cartContador{
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  color: #f5f5f5;
+  color: #151515;
   padding: 3px 8px;
   border-radius: 50%;
-  background-color: #151515;
+  background-color: #e5e5e5e5;
 }
 
 /* Logo */
@@ -69,6 +75,7 @@
 }
 
 .winstonLogo, h3:hover{
+  color: #151515;
   cursor: pointer;
 }
 
@@ -78,5 +85,115 @@
   border-radius: 50%;
 }
 
+/* Card */
 
+.card {
+    position: relative;
+    width: 190px;
+    height: 360px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 12px;
+    gap: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+  }
 
+  .card img{
+     max-width: 100%;
+     
+    height: 180px; /* Altura fija para las imágenes para uniformidad */
+    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse */
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    width: 224px;
+    height: 394px;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .card::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+  }
+
+  .heading {
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+
+  .card p:not(.heading) {
+    font-size: 12px;
+  }
+
+  .card p:last-child {
+    color: #e81cff;
+    font-weight: 600;
+  }
+
+  .card:hover::after {
+    filter: blur(30px);
+  }
+
+  .card:hover::before {
+    transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+  }
+
+/* Lista de items */
+
+  .itemListContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 38px; /* Espacio entre las filas y columnas (entre las cards) */
+
+    /* Centra el contenedor y le da un ancho máximo para que no se extienda demasiado */
+    max-width: 1200px; /* Ancho máximo de la cuadrícula */
+    margin: 40px auto; /* Centra el contenedor horizontalmente y le da espacio vertical */
+    padding: 38px; /* Espaciado interno para que las cards no toquen los bordes */
+
+    /* Opcional: Alinear items al centro si no ocupan todo el ancho de su celda */
+    justify-items: center;
+    align-items: center;
+  }
+
+  /* media querys */
+
+  @media (max-width: 768px) {
+    .itemListContainer {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Más pequeñas en pantallas medias */
+        gap: 15px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .itemListContainer {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas muy pequeñas */
+        gap: 10px;
+        padding: 10px;
+    }
+    .card {
+        width: 95%; /* Las cards pueden ocupar más ancho */
+    }
+}
