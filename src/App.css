@@ -14,11 +14,12 @@
   align-items: center;
   padding: 10px 0;
   min-width: 98%;
-   position: fixed; /* Esto hace que la barra se quede pegada */
-    top: 0;          /* La pega a la parte superior de la ventana */
-    left: 0;         /* La pega a la parte izquierda de la ventana */
-    width: 100%;     /* Asegura que ocupe todo el ancho de la ventana */
-    z-index: 1000;   
+  position: fixed; 
+  top: 0;          
+  left: 0;         
+  width: 100%;     
+  z-index: 1000;  
+  border: 0.1px solid #e5e5e5e5; 
 }
 
 .navLinks{
@@ -29,12 +30,17 @@
   gap: 30px;
 }
 
-.navLinks li:hover{
+.navLinks a:hover{
+  
+  transform: scale(1.08) translateX(2px);
   border-bottom: 2.4px solid #151515;
-  transition: border-bottom 0.15s ease;
+  transition: all 0.15s ease-in-out;
 }
 
 .navLinks a{
+  display: inline-block;
+  transform: scale(1) translateX(0); 
+  transition: all 0.3s ease; 
   color: #151515;
   text-decoration: none;
 }
@@ -48,18 +54,19 @@
   height: 50px;
   display: flex;
   align-items: center;
-  border: 2px solid #fc00ff;
+  border: 2px solid #e0e0e0;
   
 }
 
 .cartWidget:hover{
   background-color: #f5f5f5;
+  border: 2.5px solid var(--card-accent);
   transition: background-color 0.2s ease-in-out;
 }
 
 .cartWidget img{
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .cartContador{

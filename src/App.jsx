@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
-import Card from './components/Card'
+import Item from './Item';
 import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer'
 
