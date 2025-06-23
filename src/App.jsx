@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
-import Item from './Item';
 import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer'
 

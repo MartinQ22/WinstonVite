@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Item({ item }) { 
+function Item ({ item }) { 
+  
   return (
     <div className="card" key={item.id}>
       <div className="card__shine"></div>
