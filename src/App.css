@@ -1,4 +1,18 @@
 #root {
+  
+  --text-color: #1e293b;
+    --text-light: #666;
+    --text-lighter: #a3a3a3;
+    --bg-light: #f9f9f9;
+    --bg-dark: #1a1a1a;
+    --border-color: #e5e5e5;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --transition: 0.3s ease-in-out;
+    --container-width: 1200px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+
   margin: 0 auto;
   padding: 2rem;
   --card-bg: #ffffff;
@@ -31,7 +45,6 @@
 }
 
 .navLinks a:hover{
-  
   transform: scale(1.08) translateX(2px);
   border-bottom: 2.4px solid #151515;
   transition: all 0.15s ease-in-out;
@@ -46,8 +59,30 @@
 }
 
 .categoryDropdown{
+  font-size: 16px;
+  background-color: white;
+  display: inline-block;
+  transform: scale(1) translateX(0);
+  transition: all 0.3s ease;
   color: #151515;
+  border: none;
 }
+
+.categoryDropdown :hover{
+  transform: scale(1.08) translateX(2px);
+  border-bottom: 2.4px solid #151515;
+  transition: all 0.15s ease-in-out;
+}
+
+.categoryDropdown :active{
+  border: none;
+}
+
+.optionFont{
+  font-size: 14px;
+}
+
+
 
 /* CartWidget */
 .cartWidget{
@@ -112,8 +147,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, sans-serif;
-  /* Puedes agregar margin o padding si la usas en un grid o flexbox */
-  margin: 10px; /* Ejemplo */
+  margin: 10px; 
 }
 
 /* Efectos de brillo y resplandor */
@@ -151,31 +185,27 @@
   position: relative;
   z-index: 2;
 }
-/* MODIFICACIÓN CLAVE:
-  Este es el contenedor para tu imagen.
-  Reemplaza el `.card__image` original.
-*/
+
 .card__image-container {
   width: 100%;
-  height: 100px; /* Altura fija para la imagen, ajústala si es necesario */
+  height: 100px; 
   border-radius: 12px;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  overflow: hidden; /* Muy importante para que la imagen y el overlay respeten el border-radius */
-  display: flex; /* Para centrar la imagen dentro si no ocupa todo el espacio */
+  overflow: hidden; 
+  display: flex; 
   justify-content: center;
   align-items: center;
 }
 
-/* Estilo para la imagen real del producto dentro del contenedor.
-*/
+/* Estilo para la imagen real del producto dentro del contenedor.*/
 .card__product-image {
   max-width: 100%;
-  max-height: 100%; /* La imagen no excederá las dimensiones del contenedor */
-  object-fit: contain; /* Ajusta esto a 'cover' si quieres que la imagen llene el espacio, recortando si es necesario */
-  display: block; /* Elimina cualquier espacio extra debajo de la imagen */
-  border-radius: inherit; /* Hereda el radio del contenedor para esquinas redondeadas */
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Para transiciones al hover */
+  max-height: 100%; 
+  object-fit: cover; 
+  display: block;
+  border-radius: inherit; 
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
 /* Overlay para los patrones/brillos sobre la imagen */
@@ -195,9 +225,9 @@
       transparent 2px,
       transparent 4px
     );
-  opacity: 0.5; /* Opacidad del overlay, ajusta a 0 si quieres que aparezca solo al hover */
-  pointer-events: none; /* Asegura que no bloquee clicks en la imagen */
-  border-radius: inherit; /* Hereda el border-radius */
+  opacity: 0.5; 
+  pointer-events: none; 
+  border-radius: inherit; 
 }
 
 
@@ -215,7 +245,7 @@
   transition: all 0.3s ease;
 }
 
-.card__description { /* Usado para item.category */
+.card__description { 
   color: var(--card-text);
   font-size: 0.75em;
   margin: 0;
@@ -284,7 +314,7 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Opcional: Si quieres que la imagen misma también tenga un pequeño efecto */
+/* imagen efecto */
 .card:hover .card__product-image {
     transform: scale(1.05); 
     filter: brightness(1.1); 
@@ -342,6 +372,222 @@
   }
 }
 
+/* Contenedor principal de la página de detalles */
+.item-detail-page-wrapper {
+    padding: var(--spacing-lg) var(--spacing-md);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--card-text);
+}
+
+.item-detail-container {
+    display: flex;
+    flex-direction: column; 
+    background: var(--card-bg);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 900px; 
+    width: 100%; 
+    margin: var(--spacing-lg) 0; 
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Sección de la imagen */
+.item-detail-image-section {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0; 
+}
+
+.item-detail-product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px; 
+}
+
+/* Sección de información del producto */
+.item-detail-info-section {
+    padding: var(--spacing-lg); /* Más padding que en la card */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em; /* Más espacio entre elementos */
+    position: relative;
+    z-index: 2;
+}
+
+.item-detail-title {
+    color: var(--card-text);
+    font-size: 2.5em; 
+    margin: 0;
+    font-weight: 700;
+}
+
+.item-detail-category {
+    color: var(--text-lighter);
+    font-size: 1em;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.item-detail-description {
+    color: var(--card-text);
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Sección de precio y cantidad */
+.item-detail-price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-md);
+    gap: var(--spacing-md); 
+    flex-wrap: wrap; 
+}
+
+.item-detail-price {
+    color: var(--card-text);
+    font-weight: 700;
+    font-size: 2em; 
+    flex-grow: 1; 
+}
+
+.item-detail-quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    padding: 8px 15px;
+}
+
+.item-detail-quantity-selector .quantity-btn {
+    background: var(--card-accent);
+    border: 1px solid var(--card-accent);
+    color: var(--card-bg);
+    width: 10px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.item-detail-quantity-selector .quantity-btn:hover {
+    background-color: var(--card-accent);
+    color: white;
+}
+
+.item-detail-quantity-selector .quantity-display {
+    color: var(--card-text);
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* Botón de Agregar al Carrito */
+.item-detail-add-to-cart-button {
+    background-color: var(--card-accent) ; 
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 6px; 
+    width: 100%; 
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: var(--spacing-md);
+}
+
+.item-detail-add-to-cart-button:hover {
+    background-color:  var(--card-accent); 
+    transform: translateY(-2px);
+    border: 3px solid var(--border-color); 
+}
+
+.item-detail-add-to-cart-button:active {
+    transform: translateY(0);
+    color: var(--card-accent); 
+    background-color: var(--border-color);
+}
+
+/* Hover effects for the detail container */
+.item-detail-container:hover {
+    /* box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3); */
+    border-color: rgba(124, 58, 237, 0.4);
+}
+
+.item-detail-container:hover::before {
+    opacity: 1;
+    animation: shine 3s infinite; /* Reutiliza la animación shine */
+}
+
+.item-detail-container:hover::after {
+    opacity: 1;
+}
+
+/* Animation Keyframes (reutilizadas de tu ejemplo) */
+@keyframes shine {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes pulse { /* Si se usa para el botón */
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); } 
+    100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .item-detail-container {
+        flex-direction: row; 
+        align-items: flex-start; 
+    }
+
+    .item-detail-image-section {
+        flex: 1; 
+        height: auto; 
+        max-width: 50%; 
+        border-radius: 20px 0 0 20px; 
+    }
+
+    .item-detail-info-section {
+        flex: 1; 
+        max-width: 50%; 
+    }
+    
+    .item-detail-title {
+        font-size: 3em; 
+    }
+
+    .item-detail-price {
+        font-size: 2.5em; 
+    }
+
+    .item-detail-quantity-selector {
+        flex-shrink: 0; 
+    }
+}
+
 
 /* Lista de items */
 
@@ -360,19 +606,67 @@
 
   @media (max-width: 768px) {
     .itemListContainer {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Más pequeñas en pantallas medias */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 15px;
         padding: 15px;
+    }
+    .item-detail-container {
+        flex-direction: row; 
+        align-items: flex-start; 
+    }
+
+    .item-detail-image-section {
+        flex: 1; 
+        height: auto; 
+        max-width: 50%; 
+        border-radius: 20px 0 0 20px; 
+    }
+
+    .item-detail-info-section {
+        flex: 1; 
+        max-width: 50%; 
+    }
+    
+    .item-detail-title {
+        font-size: 3em; 
+    }
+
+    .item-detail-price {
+        font-size: 2.5em; 
+    }
+
+    .item-detail-quantity-selector {
+        flex-shrink: 0; /* Evita que el selector se encoja */
     }
 }
 
 @media (max-width: 480px) {
     .itemListContainer {
-        grid-template-columns: 1fr; /* Una sola columna en pantallas muy pequeñas */
+        grid-template-columns: 1fr; 
         gap: 10px;
         padding: 10px;
     }
     .card {
-        width: 95%; /* Las cards pueden ocupar más ancho */
+        width: 95%; 
+    }
+    .item-detail-page-wrapper {
+        padding: var(--spacing-md);
+    }
+    .item-detail-title {
+        font-size: 2em; 
+    }
+    .item-detail-price {
+        font-size: 1.8em;
+    }
+    .item-detail-info-section {
+        padding: var(--spacing-md);
+        gap: 1em;
+    }
+    .item-detail-image-section {
+        height: 300px; 
+    }
+    .item-detail-add-to-cart-button {
+        font-size: 1em;
+        padding: 15px 30px;
     }
 }

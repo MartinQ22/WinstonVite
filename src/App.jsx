@@ -19,6 +19,8 @@ function App() {
       <Route path="/category/:categoryName" element={<ItemListContainer />}/>
       {/* Ruta para single items */}
       <Route path="/item/:id" element={<ItemDetailContainer />}/>
+      {/* Ruta de error 404*/}
+      {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
       
     </BrowserRouter>

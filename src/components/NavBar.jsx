@@ -32,15 +32,14 @@ function NavBar() {
         <Link to={"/"}>Home</Link>
         {/* Link de Categorias */}
         <div className="categoryDropdown">
-          <select
+          <select className="categoryDropdown"
             name="categories"
             id="categories"
             onChange={handleCategoryChange}
-            defaultValue=""
-          >
+            defaultValue="">
             <option value="">Seleccionar categoría</option>
             {categories.map((category, index) => (
-              <option key={index} value={category.slug}>
+              <option className="optionFont" key={index} value={category.slug}>
                 {category.name}
               </option>
             ))}
