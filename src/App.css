@@ -1,34 +1,52 @@
 #root {
   margin: 0 auto;
   padding: 2rem;
+  --card-bg: #ffffff;
+  --card-accent: #7c3aed;
+  --card-text: #1e293b;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
 }
 /* NavBar */
 .NavBar{
+  background-color: #ffff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #333;
-  padding: 20px 50px;
-  border-radius: 55px;
+  padding: 10px 0;
   min-width: 98%;
+  position: fixed; 
+  top: 0;          
+  left: 0;         
+  width: 100%;     
+  z-index: 1000;  
+  border: 0.1px solid #e5e5e5e5; 
 }
 
 .navLinks{
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 20%;
   display: flex;
   gap: 30px;
 }
 
-.navLinks li:hover{
-  border-bottom: 2.4px solid #f5f5f5;
-  transition: border-bottom 0.15s ease;
+.navLinks a:hover{
+  
+  transform: scale(1.08) translateX(2px);
+  border-bottom: 2.4px solid #151515;
+  transition: all 0.15s ease-in-out;
 }
 
 .navLinks a{
-  color: #f5f5f5;
+  display: inline-block;
+  transform: scale(1) translateX(0); 
+  transition: all 0.3s ease; 
+  color: #151515;
   text-decoration: none;
+}
+
+.categoryDropdown{
+  color: #151515;
 }
 
 /* CartWidget */
@@ -40,25 +58,28 @@
   height: 50px;
   display: flex;
   align-items: center;
+  border: 2px solid #e0e0e0;
+  
 }
 
 .cartWidget:hover{
-  background-color: #dadada;
+  background-color: #f5f5f5;
+  border: 2.5px solid var(--card-accent);
   transition: background-color 0.2s ease-in-out;
 }
 
 .cartWidget img{
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .cartContador{
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  color: #f5f5f5;
+  color: #151515;
   padding: 3px 8px;
   border-radius: 50%;
-  background-color: #151515;
+  background-color: #e5e5e5e5;
 }
 
 /* Logo */
@@ -69,14 +90,289 @@
 }
 
 .winstonLogo, h3:hover{
+  color: #151515;
   cursor: pointer;
 }
 
 .logoImg{
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+}
+
+/* Estilos de la card principal */
+.card {
+  width: 216px;
+  height: 100%;
+  background: var(--card-bg);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  /* Puedes agregar margin o padding si la usas en un grid o flexbox */
+  margin: 10px; /* Ejemplo */
+}
+
+/* Efectos de brillo y resplandor */
+.card__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card__glow {
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(124, 58, 237, 0.3) 0%,
+    rgba(124, 58, 237, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card__content {
+  padding: 1.25em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  position: relative;
+  z-index: 2;
+}
+/* MODIFICACIÓN CLAVE:
+  Este es el contenedor para tu imagen.
+  Reemplaza el `.card__image` original.
+*/
+.card__image-container {
+  width: 100%;
+  height: 100px; /* Altura fija para la imagen, ajústala si es necesario */
+  border-radius: 12px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden; /* Muy importante para que la imagen y el overlay respeten el border-radius */
+  display: flex; /* Para centrar la imagen dentro si no ocupa todo el espacio */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para la imagen real del producto dentro del contenedor.
+*/
+.card__product-image {
+  max-width: 100%;
+  max-height: 100%; /* La imagen no excederá las dimensiones del contenedor */
+  object-fit: contain; /* Ajusta esto a 'cover' si quieres que la imagen llene el espacio, recortando si es necesario */
+  display: block; /* Elimina cualquier espacio extra debajo de la imagen */
+  border-radius: inherit; /* Hereda el radio del contenedor para esquinas redondeadas */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Para transiciones al hover */
+}
+
+/* Overlay para los patrones/brillos sobre la imagen */
+.card__image-overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 30%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(139, 92, 246, 0.1) 0px,
+      rgba(139, 92, 246, 0.1) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+  opacity: 0.5; /* Opacidad del overlay, ajusta a 0 si quieres que aparezca solo al hover */
+  pointer-events: none; /* Asegura que no bloquee clicks en la imagen */
+  border-radius: inherit; /* Hereda el border-radius */
 }
 
 
+.card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
 
+.card__title {
+  color: var(--card-text);
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.card__description { /* Usado para item.category */
+  color: var(--card-text);
+  font-size: 0.75em;
+  margin: 0;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.card__price {
+  color: var(--card-text);
+  font-weight: 700;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.card__button {
+  width: 28px;
+  height: 28px;
+  background: var(--card-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(0.9);
+}
+
+/* Hover Effects */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.card:hover .card__shine {
+  opacity: 1;
+  animation: shine 3s infinite;
+}
+
+.card:hover .card__glow {
+  opacity: 1;
+}
+
+.card:hover .card__badge {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+/*
+  MODIFICACIÓN CLAVE para el efecto hover de la imagen:
+  Aplica el efecto de movimiento y sombra al contenedor de la imagen.
+*/
+.card:hover .card__image-container {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Opcional: Si quieres que la imagen misma también tenga un pequeño efecto */
+.card:hover .card__product-image {
+    transform: scale(1.05); 
+    filter: brightness(1.1); 
+}
+
+
+.card:hover .card__title {
+  color: var(--card-accent);
+  transform: translateX(2px);
+}
+
+.card:hover .card__description {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.card:hover .card__price {
+  color: var(--card-accent);
+  transform: translateX(2px);
+}
+
+.card:hover .card__button {
+  transform: scale(1);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+}
+
+.card:hover .card__button svg {
+  animation: pulse 1.5s infinite;
+}
+
+/* Active State */
+.card:active {
+  transform: translateY(-5px) scale(0.98);
+}
+
+/* Animations */
+@keyframes shine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* Lista de items */
+
+  .itemListContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 38px; 
+    max-width: 1200px; 
+    margin: 40px auto; 
+    padding: 38px; 
+    justify-items: center;
+    align-items: center;
+  }
+
+  /* media querys */
+
+  @media (max-width: 768px) {
+    .itemListContainer {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Más pequeñas en pantallas medias */
+        gap: 15px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .itemListContainer {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas muy pequeñas */
+        gap: 10px;
+        padding: 10px;
+    }
+    .card {
+        width: 95%; /* Las cards pueden ocupar más ancho */
+    }
+}
