@@ -1,26 +1,47 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import  CartContext  from "../context/CartContext";
 
 
 
-function Counter() {
+function Counter({item}) {
     const [counter, setCounter] = useState(0)
+    const {addToCart} = useContext(CartContext)
 
     const handleAdd = () => setCounter(counter +1);
-    const handleLess = () => setCounter(counter -1);
+    const handleLess = () => {
+        if (counter > 0) {
+            setCounter(counter - 1);
+        }
+    };
+
+    const handleAddToCart = () =>  {
+        if (counter > 0 ) {
+            addToCart({...item, quantity:counter})
+            alert("Item agregado correctamente");
+        }
+        else {
+            alert('Por favor, agrega una cantidad correcta de items');
+        }
+        
+    }  
 
     useEffect (()=> {
 
     }, [counter])
 
-    // [] .. se ejecuta una vez en el montaje
-    // [x] .. se va ejecutar el codigo cada vez que el codigo se monte o varie yr
-    
-
     return (
-        <div>
-            <p>{counter}</p>
-            <button onClick={handleAdd}>+</button>
-            <button onClick={handleLess}>-</button>
+        <div className="item-detail-quantity-selector">
+            
+            <button className="quantity-btn" onClick={handleLess}>-</button>
+            <span className="quantity-display">{counter}</span>
+            <button className="quantity-btn" onClick={handleAdd}>+</button>
+
+            <button onClick={handleAddToCart} 
+            className="item-detail-add-to-cart-button"
+            disabled={counter === 0} 
+            // deshabilita el button si el contador es 0 
+            >
+                Agregar al Carrito</button>
         </div>
     )
 

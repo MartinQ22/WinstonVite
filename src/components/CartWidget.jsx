@@ -1,16 +1,17 @@
-import { useState } from 'react'
-
+import { useContext } from 'react';
+import  CartContext  from "../context/CartContext";
+import { useNavigate } from 'react-router';
 function CartWidget () {
-    const [cantidadItems, setCantidadItems] = useState("0");
 
-    const handleClick = () => {
-        console.log('Boton clickeado');
-    };
+    const { getQuantity } = useContext(CartContext)
+    const quantity = getQuantity ()
+    const navigate = useNavigate()
 
     return (
-        <button className='cartWidget' onClick={handleClick}>
+
+        <button className='cartWidget' onClick={()=>navigate('/cart')}>
             <img src="https://res.cloudinary.com/dfwb8a17z/image/upload/v1748839992/cart-8-svgrepo-com_i2laqa.png" alt="icono carrito" />
-            <p className='cartContador'>{cantidadItems}</p>
+            <p className='cartContador'>{quantity}</p>
         </button>
     )
 }

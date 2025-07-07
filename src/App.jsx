@@ -1,18 +1,28 @@
 import { useState, useEffect, useRef } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router"
 import './App.css'
 import NavBar from './components/NavBar'
+import ItemDetailContainer from './components/ItemDetailContainer'
 import ItemListContainer from './components/ItemListContainer'
-import { BrowserRouter, Routes, Route } from "react-router";
+import Cart from "./components/Cart"
 
 function App() {
   
   return(
     <>
-
+    
     <BrowserRouter>
     <NavBar />
     <Routes>
+      {/* Ruta para el home */}
       <Route path="/" element={<ItemListContainer />}/>
+      {/* Ruta para las categorias */}
+      <Route path="/category/:categoryName" element={<ItemListContainer />}/>
+      {/* Ruta para single items */}
+      <Route path="/item/:id" element={<ItemDetailContainer />}/>
+      {/* Ruta de error 404*/}
+      {/* <Route path="*" element={<NotFoundPage />} /> */}
+      <Route path="/cart" element={<Cart />}/>
     </Routes>
       
     </BrowserRouter>
@@ -23,11 +33,7 @@ function App() {
 
 export default App
 
-const data = { name: 'soy una promesa'}
 
-const promesa = new Promise((resolve, reject)=> {resolve(data)}) 
 
-const resultadoPromesa = await promesa
 
-console.log(resultadoPromesa);
 

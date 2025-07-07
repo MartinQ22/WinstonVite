@@ -1,33 +1,30 @@
 import { useEffect, useRef, useState } from "react";
-import ItemList from './ItemList';
+import ItemList from "./ItemList";
+import { useParams } from "react-router";
 
-function ItemListContainer () {
+function ItemListContainer() {
+  const [items, setItems] = useState([]);
+  const { categoryName } = useParams();
 
-    const [items, setItems] = useState([])
+  useEffect(() => {
+    if (categoryName) {
+      fetch(`https://dummyjson.com/products/category/${categoryName}`)
+        .then((res) => res.json())
+        .then((data) => setItems(data.products))
+        .catch((error) =>
+          console.error("Error al cargar el fetch de categorias:", error)
+        );
+    } else {
+      fetch("https://dummyjson.com/products")
+        .then((res) => res.json())
+        .then((res) => setItems(res.products))
+        .catch((error) =>
+          console.error("Error al cargar el fetch de categorias:", error)
+        );
+    }
+  }, [categoryName]);
 
-    // const getItems = () => new Promise ((resolve, reject)=> {
-    //     if (productos.length > 0) {
-    //          setTimeout(() => {
-    //         resolve(productos)
-    //     }, 3000)
-    //     } else {
-    //         reject('No hay mas productos')
-    //     }
-       
-    // })
-    useEffect(() => {
-       const productos = fetch('https://dummyjson.com/products')
-       .then(res => res.json())
-       .then(res => setItems(res.products))
-      
-      //  getItems()
-      //  .then(data => setItems(data))
-      //  .catch(err => console.log(err))
-    }, [])
-
-    return (
-        <ItemList items={items}/>
-    )
+  return <ItemList items={items} />;
 }
 
 export default ItemListContainer;

@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 function Item ({ item }) { 
+  const navigate = useNavigate();
   
   return (
-    <div className="card" key={item.id}>
+    <div className="card" key={item.id} onClick={() => navigate(`/item/${item.id}`)}>
       <div className="card__shine"></div>
       <div className="card__glow"></div>
       <div className="card__content">
@@ -16,7 +18,7 @@ function Item ({ item }) {
 
         <div className="card__text">
           <p className="card__title">{item.title}</p>
-          <p className="card__description">{item.description}</p> {/* Usamos la categoría como descripción */}
+          <p className="card__description">{item.description}</p> 
         </div>
 
         <div className="card__footer">
@@ -24,7 +26,7 @@ function Item ({ item }) {
           <div className="card__button">
             <svg height="16" width="16" viewBox="0 0 24 24">
               <path
-                strokeWidth="2" // En JSX es strokeWidth, no stroke-width
+                strokeWidth="2" 
                 stroke="currentColor"
                 d="M4 12H20M12 4V20"
                 fill="currentColor"
