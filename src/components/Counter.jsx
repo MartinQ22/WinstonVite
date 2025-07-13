@@ -17,7 +17,6 @@ function Counter({item}) {
     const handleAddToCart = () =>  {
         if (counter > 0 ) {
             addToCart({...item, quantity:counter})
-            alert("Item agregado correctamente");
         }
         else {
             alert('Por favor, agrega una cantidad correcta de items');

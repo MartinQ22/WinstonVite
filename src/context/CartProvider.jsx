@@ -10,6 +10,26 @@ function CartProvider ({children}) {
         setCart([...cart, product])
     }
 
+    const removeFromCart = (productId) => {
+        setCart(cart.map(item => {
+            if (item.id === productId) {
+                if (item.quantity > 1) {
+                    return { ...item, quantity: item.quantity - 1 };
+                } else {
+                    return null; // Remove item completely if quantity becomes 0
+                }
+            }
+            return item;
+        }).filter(item => item !== null)); // Remove null items
+    }
+
+    const getTotal = () => {
+        const total = cart.map( prod  => prod.price * prod.quantity )
+        const totalPrice = total.reduce((acc, current)=>acc + current, 0)
+       
+        return totalPrice
+    }
+
     const getQuantity = () => {
         const quantities = cart.map( prod  => prod.quantity )
         const total = quantities.reduce((acc, current)=>acc + current, 0)
@@ -18,7 +38,7 @@ function CartProvider ({children}) {
     } 
 
     return (
-        <CartContext.Provider value={{cart, addToCart, getQuantity}}>
+        <CartContext.Provider value={{cart, addToCart, removeFromCart, getQuantity, getTotal}}>
             {children}
         </CartContext.Provider>
     )
