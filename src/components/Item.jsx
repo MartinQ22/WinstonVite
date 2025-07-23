@@ -18,7 +18,7 @@ function Item ({ item }) {
 
         <div className="card__text">
           <p className="card__title">{item.title}</p>
-          <p className="card__description">{item.description}</p> 
+          <p className="card__description">{item.category}</p> 
         </div>
 
         <div className="card__footer">
