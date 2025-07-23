@@ -1,13 +1,15 @@
 import { useContext } from "react"
 import { useCart } from "../context/useCart"
 import { Link } from "react-router"
+import { useNavigate } from "react-router"
 
 function  Cart() {
     const{cart, removeFromCart} = useCart()
+    const navigate = useNavigate()
 
     if (cart.length === 0) {
         return (
-            <div>
+            <div className="errorNoItems">
                 <h1>No hay items en el carrito</h1>
                 <Link to="/">Ir a la tienda</Link>
             </div>
@@ -34,7 +36,7 @@ function  Cart() {
         ))}
 
         <h2 className="total-btn">Total ${getTotal()}</h2>
-        <button className="item-detail-add-to-cart-button">Ir al Check out</button>
+        <button className="item-detail-add-to-cart-button" onClick={() => navigate('/checkout')}>Ir al Check out</button>
     </div>
 }
 

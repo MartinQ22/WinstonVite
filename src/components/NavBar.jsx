@@ -1,6 +1,6 @@
 import Logo from "./Logo";
 import CartWidget from "./CartWidget";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function NavBar() {
@@ -48,8 +48,8 @@ function NavBar() {
               <Link to="/category/Componentes PC" onClick={closeDropdown}>
                 Componentes PC
               </Link>
-              <Link to="/category/beuty" onClick={closeDropdown}>
-                Beuty
+              <Link to="/category/Beauty" onClick={closeDropdown}>
+                Beauty
               </Link>
             </div>
           )}

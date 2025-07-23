@@ -1,24 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { getItem } from "../firebase/db";
 import ItemDetail from "./ItemDetail";
 
-function ItemDetailContainer () {
-    const { id } = useParams();
-    const [item, setItem] = useState(null);
-    
-    useEffect(() => {
-        fetch(`https://dummyjson.com/products/${id}`)
-            .then(res => res.json())
-            .then((res) => setItem(res))
-            .catch((error) =>
-          console.error("Error al cargar el fetch de categorias:", error)
-        );
-    }, [id]);
+function ItemDetailContainer() {
+  const { id } = useParams();
+  const [item, setItem] = useState(null);
 
-    return (
-    < ItemDetail item={item}/>
-    )
+  useEffect(() => {
+    getItem(id).then((res) => setItem(res));
+  }, [id]);
+
+  return <ItemDetail item={item} />;
 }
-    
-    export default ItemDetailContainer;
-    
+
+export default ItemDetailContainer;

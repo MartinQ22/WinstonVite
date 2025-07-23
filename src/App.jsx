@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import ItemListContainer from './components/ItemListContainer'
 import Cart from "./components/Cart"
+import Checkout from "./components/Checkout"
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
       {/* Ruta de error 404*/}
       {/* <Route path="*" element={<NotFoundPage />} /> */}
       <Route path="/cart" element={<Cart />}/>
+      <Route path="/checkout" element={<Checkout />}/>
     </Routes>
       
     </BrowserRouter>
