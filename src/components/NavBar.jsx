@@ -9,22 +9,6 @@ function NavBar() {
   const handleDropdown = () => setDropdownOpen((open) => !open);
   const closeDropdown = () => setDropdownOpen(false);
 
-  // const [categories, setCategories] = useState([]);
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   fetch("https://dummyjson.com/products/categories")
-  //     .then((response) => response.json())
-  //     .then((data) => setCategories(data))
-  // }, []);
-
-  // const handleCategoryChange = (event) => {
-  //   const selectedCategory = event.target.value;
-  //   if (selectedCategory) {
-  //     navigate(`/category/${selectedCategory}`);
-  //   }
-  // };
-
   return (
     <nav className="NavBar">
       <Logo />
@@ -65,17 +49,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-//  <div className="categoryDropdown">
-//           <select className="categoryDropdown"
-//               name="categories"
-//               id="categories"
-//               onChange={handleCategoryChange}
-//               defaultValue="">
-//             <option value="">Seleccionar categoría</option>
-//               {categories.map((category, index) => (
-//               <option className="optionFont" key={index} value={category.slug}>
-//                 {category.name}
-//               </option>
-//             ))}
-//           </select>

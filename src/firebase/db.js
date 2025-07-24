@@ -30,7 +30,6 @@ export const getItemsByCategory = async (category) => {
   const items = [];
 
   querySnapshot.forEach((doc) => {
-    console.log(doc.data());
     items.push({ ...doc.data(), id: doc.id });
   });
 
