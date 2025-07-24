@@ -6,6 +6,7 @@ import {
   where,
   doc,
   getDoc,
+  addDoc,
 } from "firebase/firestore";
 import { app } from "./config";
 
@@ -45,4 +46,10 @@ if (docSnap.exists()) {
 } else {
   console.log("ERRRRRRORRRRRRRRRR");
 }
+}
+
+export const createOrder = async (order) => {
+
+  const docRef = await addDoc(collection(db, "orders"),order);
+  console.log("Document written with ID: ", docRef.id);
 }
