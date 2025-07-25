@@ -38,10 +38,8 @@ function NavBar() {
             </div>
           )}
         </div>
-        <Link to={"/Ofertas/"}>Ofertas</Link>
-        <Link to={"/Productos/"}>Productos</Link>
         <Link to={"/Contacto/"}>Contacto</Link>
-        <Link to={"/Mis-Pedidos/"}>Mis pedidos</Link>
+        <Link to={"/cart"}>Mis pedidos</Link>
       </ul>
       <CartWidget />
     </nav>

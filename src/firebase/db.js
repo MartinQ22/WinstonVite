@@ -40,15 +40,15 @@ export const getItem = async (id) => {
   const docRef = doc(db, "items", id);
   const docSnap = await getDoc(docRef);
 
-if (docSnap.exists()) {
-  return {...docSnap.data(), id: docSnap.id}
-} else {
-  console.log("ERRRRRRORRRRRRRRRR");
-}
-}
+  if (docSnap.exists()) {
+    return { ...docSnap.data(), id: docSnap.id };
+  } else {
+    console.log("ERRRRRRORRRRRRRRRR");
+  }
+};
 
 export const createOrder = async (order) => {
-
-  const docRef = await addDoc(collection(db, "orders"),order);
+  const docRef = await addDoc(collection(db, "orders"), order);
   console.log("Document written with ID: ", docRef.id);
-}
+  return docRef; // Return the docRef so you can await this function
+};

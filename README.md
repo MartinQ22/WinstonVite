@@ -9,6 +9,7 @@ Este es un proyecto de eCommerce desarrollado con **React** y **Vite**, que perm
 - [Firebase](https://firebase.google.com/docs) – Backend para almacenamiento de productos y órdenes.
 - [React Router](https://reactrouter.com/) – Para la navegación entre rutas.
 - [React DOM](https://reactjs.org/) – Renderizado de la app en el DOM.
+- [React Toastify](https://www.npmjs.com/package/react-toastify) – notificacion Toaster.
 - [React Router DOM](https://reactrouter.com/) – Enlace entre React Router y el DOM.
 - [Styled Components](https://styled-components.com/docs) – Estilado basado en componentes.
 
@@ -25,7 +26,6 @@ Este es un proyecto de eCommerce desarrollado con **React** y **Vite**, que perm
 ```
 src/
 ├── components/        # Componentes reutilizables como Navbar, ItemList, Cart
-├── pages/             # Páginas principales como Home, Cart, Checkout
 ├── context/           # Contexto global para el carrito
 ├── firebase/          # Configuración e interacción con Firebase
 ├── App.jsx            # Componente principal con rutas
