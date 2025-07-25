@@ -1,6 +1,6 @@
 import Logo from "./Logo";
 import CartWidget from "./CartWidget";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 
 function NavBar() {
@@ -20,21 +20,21 @@ function NavBar() {
           </button>
           {dropdownOpen && (
             <div className="dropdown-menu">
-              <Link to="/category/Gabinetes" onClick={closeDropdown}>
+              <NavLink to="/category/Gabinetes" className={({ isActive }) => isActive ? "active" : ""} onClick={closeDropdown}>
                 Gabinetes
-              </Link>
-              <Link to="/category/Videojuegos" onClick={closeDropdown}>
+              </NavLink>
+              <NavLink to="/category/Videojuegos" className={({ isActive }) => isActive ? "active" : ""} onClick={closeDropdown}>
                 Videojuegos
-              </Link>
-              <Link to="/category/Perifericos" onClick={closeDropdown}>
+              </NavLink>
+              <NavLink to="/category/Perifericos" className={({ isActive }) => isActive ? "active" : ""} onClick={closeDropdown}>
                 Perifericos
-              </Link>
-              <Link to="/category/Componentes PC" onClick={closeDropdown}>
+              </NavLink>
+              <NavLink to="/category/Componentes PC" className={({ isActive }) => isActive ? "active" : ""} onClick={closeDropdown}>
                 Componentes PC
-              </Link>
-              <Link to="/category/Beauty" onClick={closeDropdown}>
+              </NavLink>
+              <NavLink to="/category/Beauty" onClick={closeDropdown}>
                 Beauty
-              </Link>
+              </NavLink>
             </div>
           )}
         </div>

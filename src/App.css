@@ -20,6 +20,9 @@
   --card-text: #1e293b;
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
 }
+.active {
+  font-weight: bold;
+}
 /* NavBar */
 .NavBar {
   background-color: #ffff;
@@ -165,8 +168,7 @@
   gap: 10px;
 }
 
-.winstonLogo,
-h3:hover {
+.winstonLogoText {
   color: #151515;
   cursor: pointer;
 }
@@ -517,7 +519,7 @@ h3:hover {
   padding: 8px 15px;
 }
 
-.quantity-display{
+.quantity-display {
   padding: 0 12px;
 }
 
@@ -557,13 +559,12 @@ h3:hover {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease;
   margin-top: var(--spacing-md);
 }
 
 .item-detail-add-to-cart-button:hover {
   background-color: var(--card-accent);
-  transform: translateY(-2px);
   border: 3px solid var(--border-color);
 }
 
@@ -810,13 +811,13 @@ h3:hover {
   }
 
   .delete-btn {
-    width: 100%; /* El botón ocupa todo el ancho */
+    width: 100%;
     margin-top: 10px;
   }
 
   .total-btn {
     font-size: 1.5em;
-    text-align: center; /* Centra el total */
+    text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
   }
@@ -827,26 +828,25 @@ h3:hover {
   }
 }
 
-.errorNoItems h1{
-  color: var(--card-text);
+.errorNoItems h1 {
+  color: var(--bg-dark);
 }
 
-.errorNoItems a{
-  
+.errorNoItems a {
   padding: 8px 16px;
   border-radius: 4px;
-  color: var(--card-text);
+  color: var(--text-light);
   border: 1px solid var(--border-color);
   background-color: var(--card-bg);
 }
 
-.errorNoItems a:hover{
+.errorNoItems a:hover {
   color: var(--card-hover);
   background-color: var(--bg-light);
   border-color: var(--card-accent);
 }
 
-.errorNoItems a:active{
+.errorNoItems a:active {
   background-color: var(--card-hover);
   color: var(--bg-light);
 }
@@ -874,7 +874,7 @@ h3:hover {
   gap: 16px;
 }
 
-.checkout-form p{
+.checkout-form p {
   color: var(--card-text);
   text-align: center;
   font-size: 12px;
@@ -931,7 +931,6 @@ h3:hover {
   background-color: #ccc;
   cursor: not-allowed;
 }
-
 
 /* media querys */
 
