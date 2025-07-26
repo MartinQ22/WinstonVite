@@ -20,16 +20,32 @@ function NavBar() {
           </button>
           {dropdownOpen && (
             <div className="dropdown-menu">
-              <NavLink to="/category/Gabinetes" className={({ isActive }) => isActive ? "active" : ""} onClick={closeDropdown}>
+              <NavLink
+                to="/category/Gabinetes"
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={closeDropdown}
+              >
                 Gabinetes
               </NavLink>
-              <NavLink to="/category/Videojuegos" className={({ isActive }) => isActive ? "active" : ""} onClick={closeDropdown}>
+              <NavLink
+                to="/category/Videojuegos"
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={closeDropdown}
+              >
                 Videojuegos
               </NavLink>
-              <NavLink to="/category/Perifericos" className={({ isActive }) => isActive ? "active" : ""} onClick={closeDropdown}>
+              <NavLink
+                to="/category/Perifericos"
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={closeDropdown}
+              >
                 Perifericos
               </NavLink>
-              <NavLink to="/category/Componentes PC" className={({ isActive }) => isActive ? "active" : ""} onClick={closeDropdown}>
+              <NavLink
+                to="/category/Componentes PC"
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={closeDropdown}
+              >
                 Componentes PC
               </NavLink>
               <NavLink to="/category/Beauty" onClick={closeDropdown}>

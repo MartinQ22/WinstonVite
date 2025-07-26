@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import CartContext from "../context/CartContext";
-import { toast } from "react-toastify";
+import { toast, Bounce } from "react-toastify";
 
 function Counter({ item }) {
-    const notifyCart = () => {
+  const notifyCart = () => {
     toast.success("Producto agregado al carrito!", {
       position: "top-right",
       autoClose: 5000,
@@ -28,10 +28,20 @@ function Counter({ item }) {
     if (counter > 0) {
       addToCart({ ...item, quantity: counter });
     } else {
-      alert("Por favor, agrega una cantidad correcta de items");
+      toast.error("Error al agregar al carrito, intentalo de nuevo más tarde", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
-  
+
   useEffect(() => {}, [counter]);
 
   return (

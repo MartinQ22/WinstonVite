@@ -10,7 +10,7 @@ function ItemListContainer() {
   const { categoryName } = useParams();
 
   useEffect(() => {
-    setLoading(true); // Start loading when category changes or on mount
+    setLoading(true);
     if (categoryName) {
       getItemsByCategory(categoryName)
         .then((res) => setItems(res))

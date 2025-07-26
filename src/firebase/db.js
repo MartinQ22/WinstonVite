@@ -9,6 +9,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 import { app } from "./config";
+import { toast } from "react-toastify";
 
 const db = getFirestore(app);
 
@@ -43,12 +44,24 @@ export const getItem = async (id) => {
   if (docSnap.exists()) {
     return { ...docSnap.data(), id: docSnap.id };
   } else {
-    console.log("ERRRRRRORRRRRRRRRR");
+    toast.error(
+      "Error al obtener el item, poner en contacto con el administrador",
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      }
+    );
   }
 };
 
 export const createOrder = async (order) => {
   const docRef = await addDoc(collection(db, "orders"), order);
-  console.log("Document written with ID: ", docRef.id);
-  return docRef; // Return the docRef so you can await this function
+  return docRef;
 };
