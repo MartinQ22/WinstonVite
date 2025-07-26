@@ -10,7 +10,7 @@ Este es un proyecto de eCommerce desarrollado con **React** y **Vite**, que perm
 - [React Router](https://reactrouter.com/) – Para la navegación entre rutas.
 - [React DOM](https://reactjs.org/) – Renderizado de la app en el DOM.
 - [React Toastify](https://www.npmjs.com/package/react-toastify) – notificaciones del toaster.
-- [React Spinners](https://mhnpd.github.io/react-loader-spinner/docs/intro) – loader para darle feedback al usuario.
+- [React Spinners](https://www.npmjs.com/package/react-loader-spinner) – loader para darle feedback al usuario.
 - [React Router DOM](https://reactrouter.com/) – Enlace entre React Router y el DOM.
 - [Styled Components](https://styled-components.com/docs) – Estilado basado en componentes.
 
