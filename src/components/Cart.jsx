@@ -54,6 +54,7 @@ function Cart() {
         </div>
       ))}
       <button
+        className="clean-btn"
         onClick={() => {
           clearCart();
           notifyDeleteAll();

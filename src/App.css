@@ -61,30 +61,16 @@
   text-decoration: none;
 }
 
-/* .categoryDropdown{
-  font-size: 16px;
-  background-color: white;
-  display: inline-block;
-  transform: scale(1) translateX(0);
-  transition: all 0.3s ease;
-  color: #151515;
-  border: none;
-}
-
-.categoryDropdown :hover{
-  transform: scale(1.08) translateX(2px);
-  border-bottom: 2.4px solid #151515;
-  transition: all 0.15s ease-in-out;
-}
-
-.categoryDropdown :active{
-  border: none;
-} */
-
 .optionFont {
   font-size: 14px;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .dropdown {
   position: relative;
   display: inline-block;
@@ -129,7 +115,6 @@
   background: var(--bg-light);
 }
 
-/* CartWidget */
 .cartWidget {
   background-color: #f5f5f5;
   border-radius: 50%;
@@ -161,7 +146,6 @@
   background-color: #e5e5e5e5;
 }
 
-/* Logo */
 .winstonLogo {
   display: flex;
   align-items: center;
@@ -178,7 +162,6 @@
   height: 50px;
 }
 
-/* Estilos de la card principal */
 .card {
   width: 216px;
   height: 100%;
@@ -194,7 +177,6 @@
   margin: 10px;
 }
 
-/* Efectos de brillo y resplandor */
 .card__shine {
   position: absolute;
   inset: 0;
@@ -242,7 +224,6 @@
   align-items: center;
 }
 
-/* Estilo para la imagen real del producto dentro del contenedor.*/
 .card__product-image {
   max-width: 100%;
   max-height: 100%;
@@ -252,7 +233,6 @@
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Overlay para los patrones/brillos sobre la imagen */
 .card__image-overlay {
   content: "";
   position: absolute;
@@ -324,7 +304,6 @@
   transform: scale(0.9);
 }
 
-/* Hover Effects */
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
@@ -347,16 +326,11 @@
   z-index: 1;
 }
 
-/*
-  MODIFICACIÓN CLAVE para el efecto hover de la imagen:
-  Aplica el efecto de movimiento y sombra al contenedor de la imagen.
-*/
 .card:hover .card__image-container {
   transform: translateY(-5px) scale(1.03);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* imagen efecto */
 .card:hover .card__product-image {
   transform: scale(1.05);
   filter: brightness(1.1);
@@ -386,12 +360,10 @@
   animation: pulse 1.5s infinite;
 }
 
-/* Active State */
 .card:active {
   transform: translateY(-5px) scale(0.98);
 }
 
-/* Animations */
 @keyframes shine {
   0% {
     background-position: -100% 0;
@@ -413,7 +385,6 @@
   }
 }
 
-/* Contenedor principal de la página de detalles */
 .item-detail-page-wrapper {
   padding: var(--spacing-lg) var(--spacing-md);
   min-height: 100vh;
@@ -440,7 +411,6 @@
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Sección de la imagen */
 .item-detail-image-section {
   position: relative;
   width: 100%;
@@ -461,12 +431,11 @@
   padding: 20px;
 }
 
-/* Sección de información del producto */
 .item-detail-info-section {
-  padding: var(--spacing-lg); /* Más padding que en la card */
+  padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
-  gap: 1.5em; /* Más espacio entre elementos */
+  gap: 1.5em;
   position: relative;
   z-index: 2;
 }
@@ -494,7 +463,6 @@
   opacity: 0.9;
 }
 
-/* Sección de precio y cantidad */
 .item-detail-price-section {
   display: flex;
   justify-content: space-between;
@@ -524,6 +492,7 @@
 }
 
 .item-detail-quantity-selector .quantity-btn {
+  border-radius: 50%;
   background: var(--card-accent);
   border: 1px solid var(--card-accent);
   text-align: center;
@@ -536,7 +505,7 @@
 }
 
 .item-detail-quantity-selector .quantity-btn:hover {
-  background-color: var(--card-accent);
+  background-color: var(--card-hover);
   color: white;
 }
 
@@ -544,6 +513,20 @@
   color: var(--card-text);
   font-size: 1.1em;
   font-weight: bold;
+}
+
+.clean-btn { 
+  background-color: var(--bg-light);
+  color: #c82333;
+  border: 1px solid #c82333;
+  text-align: center;
+}
+
+.clean-btn:hover {
+  background-color: #c82333;
+  color: var(--bg-light);
+  border: 1px solid #c82333;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Botón de Agregar al Carrito */
@@ -561,11 +544,12 @@
   font-weight: bold;
   transition: background-color 0.3s ease;
   margin-top: var(--spacing-md);
+  border: 3px solid transparent;
 }
 
 .item-detail-add-to-cart-button:hover {
-  background-color: var(--card-accent);
-  border: 3px solid var(--border-color);
+  background-color: var(--card-hover);
+  border-color: var(--border-color);
 }
 
 .item-detail-add-to-cart-button:active {
@@ -930,6 +914,68 @@
 .checkout-button.disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+.contact-info-container {
+  max-width: 600px;
+  padding: 2rem;
+  color: #1f1f1f;
+}
+
+.contact-subtitle {
+  color: var(--card-hover);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.contact-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.contact-description {
+  color: #5a5a5a;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.icon-box {
+  background-color: #f5f6ff;
+  color: var(--card-hover);
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-item h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contact-item p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #555;
 }
 
 /* media querys */
